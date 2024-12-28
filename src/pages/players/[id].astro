@@ -1,0 +1,40 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import playersData from '../../data/players.json';
+
+export async function getStaticPaths() {
+
+  const {players} = playersData
+    return players.map((player) => ({
+        params: { id: player.name},
+        props: { player }
+    }));
+}
+
+const { player } = Astro.props;
+
+const { name, role, img, description  } = player;
+
+---
+
+<Layout title=`BFG  ${name}`>
+    
+    
+
+  <span><a href="/players">⬅️ Volver</a></span>
+    <section class="max-w-2xl h-screen flex justify-center  space-x-8 pt-16">
+    <aside>
+        <img src={`/${img}`} alt={`imagen de ${name}`} class="w-80 rounded" transition:name={`${name}`}>
+    </aside>
+       <div class="flex flex-col">
+        <div class="flex flex-row justify-between px-24 space-x-3">
+            <h1 >{name}</h1>
+            <h1>{role}</h1>
+           </div>
+          <div class="prose prose-invert">
+           <p>{description}</p>
+        </div>
+      </div>
+    </section>
+
+</Layout>

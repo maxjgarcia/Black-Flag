@@ -1,0 +1,65 @@
+---
+
+---
+
+<div id="instagram-container" class="flex items-center justify-center bg-white/70 px-2 pb-2 rounded-md entrance mb-20">
+    <div
+      class="elfsight-app-d28021f3-77ac-490a-9f82-dcde101ec169 max-w-auto bg-transparent"
+      data-elfsight-app-lazy
+    ></div>
+</div>
+
+<script is:inline>
+
+  //TODO re do the logic in island
+  function initializeElfsight() {
+    
+    const container = document.getElementById('instagram-container');
+    const oldWidget = container.querySelector('[class*="elfsight-app-"]');
+    const widgetClass = oldWidget ? oldWidget.className : 'elfsight-app-d28021f3-77ac-490a-9f82-dcde101ec169 max-w-auto bg-transparent';
+    
+    container.innerHTML = `<div class="${widgetClass}" data-elfsight-app-lazy></div>`;
+
+   
+    document.querySelectorAll('[src*="elfsight.com"]').forEach(script => script.remove());
+    document.querySelectorAll('link[href*="elfsight.com"]').forEach(link => link.remove());
+    
+   
+    if (window.eapps) {
+      delete window.eapps;
+    }
+
+    
+    const newScript = document.createElement('script');
+    newScript.src = "https://static.elfsight.com/platform/platform.js";
+    newScript.defer = true;
+    document.body.appendChild(newScript);
+
+    
+    const removeElement = () => {
+      const elements = document.querySelectorAll('a[href*="elfsight.com/instagram-feed-instashow"]');
+      elements.forEach(element => element.remove());
+    };
+
+    removeElement();
+    
+    const observer = new MutationObserver(removeElement);
+    observer.observe(document.body, { 
+      childList: true, 
+      subtree: true,
+      attributes: true,
+      characterData: true 
+    });
+
+    setTimeout(removeElement, 1000);
+  }
+
+  
+  window.addEventListener('load', initializeElfsight);
+
+  
+  document.addEventListener('astro:page-load', () => {
+    setTimeout(initializeElfsight, 100);
+  });
+</script>
+      

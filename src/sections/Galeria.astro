@@ -1,0 +1,153 @@
+---
+import { Icon } from 'astro-icon/components'
+---
+
+<section class="flex flex-col items-center justify-center space-y-4 p-4 entrance ">
+  <!-- Top Section -->
+  <div class="flex w-full space-x-4">
+    <div class="flex-1">
+      <img
+        src="/shirt1.jpg"
+        alt="Uniforme Black Flag"
+        class="w-full h-full rounded-md object-cover cursor-pointer transition-transform duration-300 ease-in-out transform hover:scale-105 gallery-image "
+        data-index="0"
+      />
+    </div>
+
+    <div class="flex flex-1 flex-col space-y-4">
+      <img
+        src="/shirt2-back.jpg"
+        alt="Uniforme Black Flag"
+        class="w-full h-1/2 rounded-md object-cover cursor-pointer transition-transform duration-300 ease-in-out transform hover:scale-105 gallery-image"
+        data-index="1"
+      />
+      <img
+        src="/shirt2-front.jpg"
+        alt="Uniforme Black Flag"
+        class="w-full h-1/2 rounded-md object-cover cursor-pointer transition-transform duration-300 ease-in-out transform hover:scale-105 gallery-image"
+        data-index="2"
+      />
+    </div>
+  </div>
+
+  <!-- Bottom Section -->
+  <div class="flex w-full space-x-4">
+    <div class="flex-1">
+      <img
+        src="/shirt4.jpg"
+        alt="Uniforme Black Flag"
+        class="w-full h-full object-cover rounded-md cursor-pointer transition-transform duration-300 ease-in-out transform hover:scale-105 gallery-image"
+        data-index="3"
+      />
+    </div>
+    <div class="flex-1">
+      <img
+        src="/shirt5.jpg"
+        alt="Uniforme Black Flag"
+        class="w-full h-full object-cover rounded-md cursor-pointer transition-transform duration-300 ease-in-out transform hover:scale-105 gallery-image"
+        data-index="4"
+      />
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div
+  id="modal"
+  class="modal hidden fixed top-0 left-0 w-full h-full right-0 bottom-0 bg-slate-500 bg-opacity-60 flex items-center justify-center"
+>
+  <div class="modal-content relative p-4 rounded-md w-full h-full flex justify-center items-center">
+    <button
+      id="close-btn"
+      class="absolute top-0 right-0 p-2 text-black hover:white rounded-full text-lg"
+    >
+      <Icon name="x"/>
+    </button>
+    <img
+      id="carousel-img"
+      class="w-[90%] h-[90%] object-contain"
+      alt="Modal Image"
+    />
+    <button
+      id="prev-btn"
+      class="absolute left-0 top-1/2 transform -translate-y-1/2 p-2 ml-4 text-black bg-[#39C3DE]  rounded-md hover:bg-[#2886BB]"
+    >
+      <Icon name="left-arrow" />
+    </button>
+    <button
+      id="next-btn"
+      class="absolute right-0 top-1/2 transform -translate-y-1/2 p-2 mr-4 text-black bg-[#39C3DE]  rounded-md hover:bg-[#2886BB]"
+    >
+    <Icon name="right-arrow" />
+    </button>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const images = [
+      "/shirt1.jpg",
+      "/shirt2-front.jpg",
+      "/shirt2-back.jpg",
+      "/shirt4.jpg",
+      "/shirt5.jpg",
+    ];
+
+    let currentIndex = 0;
+    const modal = document.getElementById("modal");
+    const carouselImage = document.getElementById("carousel-img");
+    const prevButton = document.getElementById("prev-btn");
+    const nextButton = document.getElementById("next-btn");
+    const closeButton = document.getElementById("close-btn");
+
+    // Open modal
+    const galleryImages = document.querySelectorAll(".gallery-image");
+    galleryImages.forEach((image) => {
+      image.addEventListener("click", (event) => {
+        currentIndex = parseInt(event.target.getAttribute("data-index"));
+        openModal();
+      });
+    });
+
+    
+    function openModal() {
+      if (!modal || !carouselImage) return;
+      modal.style.display = "flex";
+      carouselImage.src = images[currentIndex];
+      document.body.style.overflow = "hidden"; // Disable body scrolling when modal is open
+    }
+
+   
+    function closeModal() {
+      if (!modal) return;
+      modal.style.display = "none";
+      document.body.style.overflow = "auto"; // Re-enable body scrolling
+    }
+
+    // modal buttons
+    function prevImage() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      carouselImage.src = images[currentIndex];
+    }
+
+    
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % images.length;
+      carouselImage.src = images[currentIndex];
+    }
+
+    
+    if (closeButton) closeButton.addEventListener("click", closeModal);
+    if (prevButton) prevButton.addEventListener("click", prevImage);
+    if (nextButton) nextButton.addEventListener("click", nextImage);
+
+    // Close modal outside image
+    if (modal) {
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+    }
+  });
+</script>

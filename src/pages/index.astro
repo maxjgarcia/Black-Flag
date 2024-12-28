@@ -1,0 +1,41 @@
+---
+
+import Layout from '../layouts/Layout.astro';
+import Galeria from '../sections/Galeria.astro';
+import Hero from '../sections/Hero.astro';
+import MainContent from '../sections/MainContent.astro'
+
+---
+
+<Layout title="Black Flag Gaming">
+	<main class="mb-32 space-y-24" >
+		<Hero />
+		<MainContent />
+		<!-- <Galeria /> -->
+	</main>	
+</Layout>
+
+
+<style is:global>
+
+	@keyframes fade-in {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+		.entrance{
+			animation: fade-in 1s ease-in both;
+			animation-delay: 1550ms;
+			
+		}
+	
+		.gradient-text {
+		background-image: linear-gradient(to left, #174897, #39C3DE); 
+		-webkit-background-clip: text; 
+		color: transparent; 
+		
+	}
+	</style>

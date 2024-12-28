@@ -1,0 +1,49 @@
+{
+  "players": [
+    {
+      "id": 1,
+      "name": "Mjl",
+      "role": "Coach, Jungla",
+      "img": "mjl.jpg",
+      "game": "League of Legends",
+      "fav_champs": "Unknown",
+      "description": "Unknown"
+    },
+    {
+      "id": 2,
+      "name": "Sarodag",
+      "role": "Coach , Support",
+      "img": "sarodag.jpg",
+      "game": "League of Legends",
+      "fav_champs": "Unknown",
+      "description": "Unknown"
+    },
+    {
+      "id": 3,
+      "name": "SBZ",
+      "role": "Mid",
+      "img": "sbz.jpg",
+      "game": "League of Legends",
+      "fav_champs": "LeBlanc, Akali, Syndra, Zoe",
+      "description": "Desde comienzos de la Season 3 imponiéndose en la mid-lane, 11 años de experiencia."
+    },
+    {
+      "id": 4,
+      "name": "Mr Adc",
+      "role": "Adc",
+      "img": "unknown.jpg",
+      "game": "League of Legends",
+      "fav_champs": "Unknown",
+      "description": "Unknown"
+    },
+    {
+      "id": 5,
+      "name": "Mr Top",
+      "role": "Top",
+      "img": "unknown.jpg",
+      "game": "League of Legends",
+      "fav_champs": "Unknown",
+      "description": "Unknown"
+    }
+  ]
+}

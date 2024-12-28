@@ -1,0 +1,45 @@
+---
+import '@fontsource-variable/jost';
+import Footer from '../sections/Footer.astro';
+import Navbar from '../sections/Navbar.astro';
+import { ClientRouter } from 'astro:transitions';
+
+const { title, children } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/bfg-mini-logo.png" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<ClientRouter/>
+	</head>
+	<body>
+		<Navbar/>
+		<div class="max-w-6xl px-10 mx-auto">
+			<slot  />
+		</div>
+		<Footer />
+	</body>
+</html>
+
+<style >
+	
+body{
+		margin: 0;
+		width: 100%;		
+		height: 100%;
+		font-family: 'Jost Variable', sans-serif;
+		color: rgb(247, 247, 247);
+		min-height: 100vh;
+		background: linear-gradient(to top left, #0f0f0f, #222833, #2e4464);
+		/* background: linear-gradient(to top left , #174897, #2886BB, #39C3DE); */
+
+		}
+
+
+</style>
+
