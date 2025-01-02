@@ -2,19 +2,16 @@
 import Layout from "../../layouts/Layout.astro";
 import playersData from '../../data/players.json';
 
-export async function getStaticPaths() {
+const { id } = Astro.params;
+const { players } = playersData;
+const player = players.find((player) => player.name === id);
 
-  const {players} = playersData
-    return players.map((player) => ({
-        params: { id: player.name},
-        props: { player }
-    }));
+
+if (!player) {
+  return Astro.redirect('/404'); 
 }
 
-const { player } = Astro.props;
-
-const { name, role, img, description  } = player;
-
+const { name, role, img, description } = player;
 ---
 
 <Layout title=`BFG  ${name}`>

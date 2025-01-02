@@ -1,0 +1,71 @@
+---
+import CountDown from "../components/CountDown.astro";
+import { Image } from "astro:assets";
+import LogoLeft from '../assets/bfgtest1.png'
+import LogoRight from '../assets/bfgtest2.png'
+import MatchesResults from '../data/matches.json'
+
+const {matches} = MatchesResults
+
+const teamL = "BFG"
+const teamR = "BFG2"
+---
+
+<section class="flex flex-row justify-center items-center w-full mb-20 ">
+<div class="flex flex-col space-y-6 justify-center items-center">
+    <span>{teamL}</span>
+    <Image src={LogoLeft} alt="logo" width={250} height={350}/>
+</div>
+
+<span class="mx-52 text-4xl">vs</span>
+
+<div class="flex flex-col space-y-6 justify-center items-center">
+    <span>{teamR}</span>
+    <Image src={LogoRight} alt="logo" width={250} height={350}/>
+</div>
+</section>
+
+<section class="border-t-2 border-b-2 border-primary-l-blue py-10">
+    
+    <CountDown server:defer teamL={teamL} teamR={teamR}>
+        <div slot="fallback" class="flex justify-center items-center text-lg"> Cargando próximo partido...</div>
+    </CountDown>
+</section>
+
+<!-- Results -->
+
+<section class="bg-transparent px-4 py-8">
+  <h2 class="">Resultados</h2>
+  </div>
+  <div class="container mx-auto border border-black">
+    {matches.map((match, index) => (
+      <div
+        class={`shadow-md overflow-hidden p-[2px] flex items-center justify-center text-white bg-primary-m-blue/10 ${
+          index !== matches.length - 1 ? 'border-b border-black' : ''
+        }`}
+      >
+        <div class="flex items-center space-x-4 flex-1 justify-center">
+          <img
+            src={match.home_team.logo_url}
+            alt={`logo ${match.home_team.name}`}
+            class="w-8"
+          />
+          <span class="font-semibold text-lg">{match.home_team.name}</span>
+          <span class={`text-xl font-bold ${match.result.win ? 'text-green-500' : 'text-red-600'}`}>{match.score.home}</span>
+          <span class="font-semibold text-lg">-</span>
+          <span class={`text-xl font-bold ${match.result.win ? 'text-red-600' : 'text-green-500'}`}>{match.score.away}</span>
+          <span class="font-semibold text-lg">{match.away_team.name}</span>
+          <img
+            src={match.away_team.logo_url}
+            alt={`logo ${match.away_team.name}`}
+            class="w-8"
+          />
+        </div>
+        <span class="text-sm ml-auto font-semibold pr-4">{match.match_date}</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+  
+  
