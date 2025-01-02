@@ -13,9 +13,6 @@
       "score": {
         "home": 2,
         "away": 1
-      },
-      "result": {
-        "win": true
       }
     },
     {
@@ -31,9 +28,6 @@
       "score": {
         "home": 2,
         "away": 0
-      },
-      "result": {
-        "win": true
       }
     },
     {
@@ -49,9 +43,6 @@
       "score": {
         "home": 1,
         "away": 2
-      },
-      "result": {
-        "win": false
       }
     },
     {
@@ -67,9 +58,21 @@
       "score": {
         "home": 0,
         "away": 2
+      }
+    },
+    {
+      "match_date": "2024-12-28",
+      "home_team": {
+        "name": "Black Flag",
+        "logo_url": "/bfgtest1.png"
       },
-      "result": {
-        "win": false
+      "away_team": {
+        "name": "bfg",
+        "logo_url": "/bfgtest2.png"
+      },
+      "score": {
+        "home": 2,
+        "away": 2
       }
     },
     {
@@ -85,9 +88,6 @@
       "score": {
         "home": 3,
         "away": 2
-      },
-      "result": {
-        "win": true
       }
     }
   ]

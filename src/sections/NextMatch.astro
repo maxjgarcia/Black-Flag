@@ -7,6 +7,22 @@ import MatchesResults from '../data/matches.json'
 
 const {matches} = MatchesResults
 
+const resultMatches = matches.map((match) => {
+  const {home, away} = match.score
+  const isHomeWinner = home > away
+  const isAwayWinner = away > home
+  const isTie = home === away
+
+  return {
+    ...match,
+    resultStyle:{
+      home: isHomeWinner ? 'text-green-500' : isTie ? 'text-yellow-500' : 'text-red-600',
+      away: isAwayWinner ? 'text-green-500' : isTie ? 'text-yellow-500' : 'text-red-600',
+    },
+    winner: isTie ? 'tie' : isHomeWinner ? 'home' : isAwayWinner ? 'away' : null,
+  }
+})
+
 const teamL = "BFG"
 const teamR = "BFG2"
 ---
@@ -67,5 +83,39 @@ const teamR = "BFG2"
   </div>
 </section>
 
+<!-- test -->
+
+<section class="bg-transparent px-4 py-8">
+  <h2 class="">Resultados</h2>
+  </div>
+  <div class="container mx-auto border border-black">
+    {resultMatches.map((match, index) => (
+      <div
+        class={`shadow-md overflow-hidden p-[2px] flex items-center justify-center text-white bg-primary-m-blue/10 ${
+          index !== matches.length - 1 ? 'border-b border-black' : ''
+        }`}
+      >
+        <div class="flex items-center space-x-4 flex-1 justify-center">
+          <img
+            src={match.home_team.logo_url}
+            alt={`logo ${match.home_team.name}`}
+            class="w-8"
+          />
+          <span class="font-semibold text-lg">{match.home_team.name}</span>
+          <span class={`text-xl font-bold ${match.resultStyle.home}`}>{match.score.home}</span>
+          <span class="font-semibold text-lg">-</span>
+          <span class={`text-xl font-bold ${match.resultStyle.away}`}>{match.score.away}</span>
+          <span class="font-semibold text-lg">{match.away_team.name}</span>
+          <img
+            src={match.away_team.logo_url}
+            alt={`logo ${match.away_team.name}`}
+            class="w-8"
+          />
+        </div>
+        <span class="text-sm ml-auto font-semibold pr-4">{match.match_date}</span>
+      </div>
+    ))}
+  </div>
+</section>
   
   
