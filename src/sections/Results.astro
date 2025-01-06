@@ -1,0 +1,126 @@
+---
+import { getMatchResults } from '../lib/appwrite.js'
+
+const matches = await getMatchResults()
+---
+
+<section class='bg-transparent px-4 py-8'>
+  
+  <h2 class='text-left ml-[5%] pb-4'>Resultados</h2>
+  <div class='container mx-auto border border-black w-[90%]'>
+    {
+      matches.map((match, index) => {
+        const isHomeWinner = match.score_home > match.score_away
+        const isAwayWinner = match.score_away > match.score_home
+        const isTie = match.score_home === match.score_away
+
+        return (
+          <div
+            class={`shadow-md overflow-hidden p-[2px] grid grid-cols-4 items-center text-slate-300 bg-primary-m-blue/10 ${
+              index !== matches.length - 1 ? 'border-b border-black' : ''
+            }`}
+          >
+
+            <!-- Results Section -->
+           
+           <div class='flex items-left space-x-4 col-span-2 pl-8 '>
+             <span class='font-semibold text-lg text-left'>{match.home_team_id}</span>
+             <span
+               class={`text-xl font-bold ${isHomeWinner ? 'text-green-500' : isTie ? 'text-yellow-500' : 'text-red-600'}`}
+             >
+               {match.score_home}
+             </span>
+             <span class='font-semibold text-lg'>-</span>
+             <span
+               class={`text-xl font-bold ${isAwayWinner ? 'text-green-500' : isTie ? 'text-yellow-500' : 'text-red-600'}`}
+             >
+               {match.score_away}
+             </span>
+             <span class='font-semibold text-lg'>{match.away_team_id}</span>
+           </div>
+
+            <!-- Tournament Section -->
+           <div class="grid grid-cols-1">
+            <span class='text-sm text-right font-semibold text-slate-300/50  pr-4'>
+              {match.tournament}
+            </span>
+           </div>
+
+           <!-- Date Section -->
+           <div class="grid grid-cols-1">
+            {match.date && (
+              <span class='text-xs text-right text-slate-300/50 font-semibold pr-8'>
+                {match.date.split('T')[0]}
+              </span>
+            )}
+           </div>
+
+          </div>
+        )
+      })
+    }
+  </div>
+</section>
+
+
+<!-- test -->
+
+<!-- <section class='bg-transparent px-4 py-8'>
+  
+  <h2 class='text-left'>Resultados</h2>
+  <div class='container mx-auto border border-black'>
+    {
+      matches.map((match, index) => {
+        const isHomeWinner = match.score_home > match.score_away
+        const isAwayWinner = match.score_away > match.score_home
+        const isTie = match.score_home === match.score_away
+
+        return (
+          <div
+            class={`shadow-md overflow-hidden p-[2px] grid grid-cols-5 items-center text-white bg-primary-m-blue/10 ${
+              index !== matches.length - 1 ? 'border-b border-black' : ''
+            }`}
+          >
+            
+           <div class="grid grid-cols-1">
+            {match.date && (
+              <span class='text-sm text-left font-semibold pl-8'>
+                {match.date.split('T')[0]}
+              </span>
+            )}
+           </div>
+           
+            
+
+           
+           
+           <div class='flex space-x-4 col-span-3 align-center justify-center'>
+             <span class='font-semibold text-lg '>{match.home_team_id}</span>
+             <span
+               class={`text-xl font-bold ${isHomeWinner ? 'text-green-500' : isTie ? 'text-yellow-500' : 'text-red-600'}`}
+             >
+               {match.score_home}
+             </span>
+             <span class='font-semibold text-lg'>-</span>
+             <span
+               class={`text-xl font-bold ${isAwayWinner ? 'text-green-500' : isTie ? 'text-yellow-500' : 'text-red-600'}`}
+             >
+               {match.score_away}
+             </span>
+             <span class='font-semibold text-lg'>{match.away_team_id}</span>
+           </div>
+
+           <div class="grid grid-cols-1">
+            <span class='text-sm text-right font-semibold pr-8'>
+              {match.tournament}
+            </span>
+           </div>
+
+          
+
+          </div>
+        )
+      })
+    }
+  </div>
+</section> -->

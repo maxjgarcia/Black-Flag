@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NextMatch from '../sections/NextMatch.astro';
+import CountDown from "../components/CountDown.astro";
+import Results from "../sections/Results.astro";
+---
+
+<Layout title="Black Flag Gaming | Partidos">
+
+<main class="mb-24 mt-20">
+
+<NextMatch />
+
+<!-- Contdown -->
+<div class="border-t-2 border-b-2 border-primary-l-blue py-10">
+    <CountDown server:defer>
+        <div slot="fallback" class="flex justify-center items-center text-lg"> Cargando próximo partido...</div>
+    </CountDown>
+</div>
+
+<!-- Results -->
+
+<Results />
+
+</main>
+</Layout>

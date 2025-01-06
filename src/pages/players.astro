@@ -5,11 +5,11 @@ import playersData from '../data/players.json';
 const { players } = playersData;
 ---
 
-<Layout title="BFG Players">
+<Layout title="Black Flag Gaming | Players">
 
-    <h1 class="text-center text-4xl mb-16">Players</h1>
-
-    <section class="grid grid-cols-3 ">
+    
+    <h1 class="text-center text-2xl mb-16 mt-12">Players</h1>
+    <section class="grid grid-cols-3">
 
         {players.map(player => {
             const { name, img } = player;

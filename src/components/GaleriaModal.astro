@@ -1,0 +1,100 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<!-- Modal -->
+ <div
+ id="modal"
+ class="modal hidden fixed top-0 left-0 w-full h-full right-0 bottom-0 bg-slate-500 bg-opacity-60 flex items-center justify-center"
+>
+ <div class="modal-content relative p-4 rounded-md w-full h-full flex justify-center items-center">
+   <button
+     id="close-btn"
+     class="absolute top-0 right-0 p-2 text-black hover:white rounded-full text-lg"
+   >
+     <Icon name="x" />
+   </button>
+   <img
+     id="carousel-img"
+     class="w-[90%] h-[90%] object-contain"
+     alt="Modal Image"
+   />
+   <button
+     id="prev-btn"
+     class="absolute left-0 top-1/2 transform -translate-y-1/2 p-2 ml-4 text-black bg-[#39C3DE] rounded-md hover:bg-[#2886BB]"
+   >
+     <Icon name="left-arrow" />
+   </button>
+   <button
+     id="next-btn"
+     class="absolute right-0 top-1/2 transform -translate-y-1/2 p-2 mr-4 text-black bg-[#39C3DE] rounded-md hover:bg-[#2886BB]"
+   >
+     <Icon name="right-arrow" />
+   </button>
+ </div>
+</div>
+</section>
+
+<script type="module" client:load>
+
+const images = [
+ "src/assets/shirt1.jpg",
+ "src/assets/shirt2-front.jpg",
+ "src/assets/shirt2-back.jpg",
+ "src/assets/shirt4.jpg",
+ "src/assets/shirt5.jpg",
+];
+
+let currentIndex = 0;
+
+
+const modal = document.getElementById("modal");
+const carouselImage = document.getElementById("carousel-img");
+const closeButton = document.getElementById("close-btn");
+const prevButton = document.getElementById("prev-btn");
+const nextButton = document.getElementById("next-btn");
+
+
+document.querySelectorAll('.gallery-image').forEach(image => {
+ image.addEventListener('click', (event) => {
+   currentIndex = parseInt(event.target.getAttribute('data-index'));
+   openModal();
+ });
+});
+
+
+function openModal() {
+ carouselImage.src = images[currentIndex];
+ modal.style.display = 'flex';
+ document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+}
+
+
+function closeModal() {
+ modal.style.display = 'none';
+ document.body.style.overflow = 'auto'; // Enable scrolling again
+}
+
+
+function prevImage() {
+ currentIndex = (currentIndex - 1 + images.length) % images.length;
+ carouselImage.src = images[currentIndex];
+}
+
+function nextImage() {
+ currentIndex = (currentIndex + 1) % images.length;
+ carouselImage.src = images[currentIndex];
+}
+
+
+closeButton.addEventListener('click', closeModal);
+prevButton.addEventListener('click', prevImage);
+nextButton.addEventListener('click', nextImage);
+
+
+modal.addEventListener('click', (e) => {
+ if (e.target === modal) {
+   closeModal();
+ }
+});
+</script>

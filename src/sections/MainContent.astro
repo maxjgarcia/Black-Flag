@@ -1,17 +1,21 @@
 ---
 import Galeria from "./Galeria.astro";
+import GaleriaTest from "./GaleriaTest.astro";
 import InstagramIFrame from "./InstagramIFrame.astro";
+import { Image } from "astro:assets";
+import TeamPhoto from '../assets/team.jpg'
 ---
 
 <section class="entrance flex flex-col items-center justify-center">
     <h1 class="text-center text-4xl mb-8 ">Conocé al equipo</h1>
-    <a href="/players"><img src='/team.jpg' alt="Foto del equipo" class="rounded"></a>
+    <!-- <a href="/players"><img src='/team.jpg' alt="Foto del equipo" class="rounded"></a> -->
+    <a href="/players"><Image src={TeamPhoto} alt="Foto del equipo" class="rounded"/></a>
 
 </section>
 
 <section>
     <InstagramIFrame />
-     <Galeria />
+     <GaleriaTest />
 </section>
 <script>
 

@@ -31,3 +31,9 @@
 [] agregar para fade in de content
 
 [] agregar 'upcoming matches'
+
+## GLOBAL
+
+[] Cambiar imagenes por image astro tags
+
+[] resultados a su propio componente

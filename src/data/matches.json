@@ -4,11 +4,11 @@
       "match_date": "2024-12-28",
       "home_team": {
         "name": "Black Flag",
-        "logo_url": "/bfgtest1.png"
+        "logo_url": "src/assets/bfgtest1.png"
       },
       "away_team": {
         "name": "bfg",
-        "logo_url": "/bfgtest2.png"
+        "logo_url": "src/assets/bfgtest2.png"
       },
       "score": {
         "home": 2,
@@ -19,11 +19,11 @@
       "match_date": "2024-12-28",
       "home_team": {
         "name": "Black Flag",
-        "logo_url": "/bfgtest1.png"
+        "logo_url": "src/assets/bfgtest1.png"
       },
       "away_team": {
         "name": "bfg",
-        "logo_url": "/bfgtest2.png"
+        "logo_url": "src/assets/bfgtest2.png"
       },
       "score": {
         "home": 2,
@@ -34,11 +34,11 @@
       "match_date": "2024-12-28",
       "home_team": {
         "name": "Black Flag",
-        "logo_url": "/bfgtest1.png"
+        "logo_url": "src/assets/bfgtest1.png"
       },
       "away_team": {
         "name": "bfg",
-        "logo_url": "/bfgtest2.png"
+        "logo_url": "src/assets/bfgtest2.png"
       },
       "score": {
         "home": 1,
@@ -49,11 +49,11 @@
       "match_date": "2024-12-28",
       "home_team": {
         "name": "Black Flag",
-        "logo_url": "/bfgtest1.png"
+        "logo_url": "src/assets/bfgtest1.png"
       },
       "away_team": {
         "name": "bfg",
-        "logo_url": "/bfgtest2.png"
+        "logo_url": "src/assets/bfgtest2.png"
       },
       "score": {
         "home": 0,
@@ -64,11 +64,11 @@
       "match_date": "2024-12-28",
       "home_team": {
         "name": "Black Flag",
-        "logo_url": "/bfgtest1.png"
+        "logo_url": "src/assets/bfgtest1.png"
       },
       "away_team": {
         "name": "bfg",
-        "logo_url": "/bfgtest2.png"
+        "logo_url": "src/assets/bfgtest2.png"
       },
       "score": {
         "home": 2,
@@ -79,11 +79,11 @@
       "match_date": "2024-12-28",
       "home_team": {
         "name": "Black Flag",
-        "logo_url": "/bfgtest1.png"
+        "logo_url": "src/assets/bfgtest1.png"
       },
       "away_team": {
         "name": "bfg",
-        "logo_url": "/bfgtest2.png"
+        "logo_url": "src/assets/bfgtest2.png"
       },
       "score": {
         "home": 3,

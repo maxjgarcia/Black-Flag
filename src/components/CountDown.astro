@@ -1,118 +1,108 @@
 ---
 // await new Promise((resolve) => setTimeout(resolve, 2000))
-// const NEXT_MATCH = 1703872626000
-const NEXT_MATCH = 1736037000000
-
-interface Props {
-    teamL: string;
-    teamR: string;
-}
-
-const { teamL, teamR } = Astro.props;
+// const NEXT_MATCH = 1736037000000
+const NEXT_MATCH = 1737246657000
 ---
 
 <!-- Countdown -->
+<section
+  data-date={NEXT_MATCH}
+  class='flex flex-row gap-y-10 gap-x-5 justify-center items-center uppercase font-semibold'
+>
+  <div class='cd-container'>
+    <span class='text-6xl tabular-nums' data-days>00</span>
+    <span class='text-xs text-center'>Días</span>
+  </div>
 
-<!-- <span class="flex justify-center items-center">{teamL} vs {teamR}</span> -->
+  <span aria-hidden='true' class='mb-4 text-xl'>:</span>
 
-<section data-date={NEXT_MATCH} class="flex flex-row gap-y-10 gap-x-5 justify-center items-center uppercase font-semibold">
+  <div class='cd-container'>
+    <span class='text-6xl tabular-nums' data-hours>00</span>
+    <span class='text-xs text-center'>Horas</span>
+  </div>
 
+  <span aria-hidden='true' class='mb-4 text-xl'>:</span>
 
-    <div class="cd-container">
-        <span class="text-6xl tabular-nums" data-days>00</span>
-        <span class="text-xs text-center">Días</span>
-    </div>
+  <div class='cd-container'>
+    <span class='text-6xl tabular-nums' data-minutes>00</span>
+    <span class='text-xs text-center'>Minutos</span>
+  </div>
 
-    <span aria-hidden="true" class="mb-4 text-xl">:</span>
+  <span aria-hidden='true' class='mb-4 text-xl'>:</span>
 
-    <div class="cd-container">
-        <span class="text-6xl tabular-nums" data-hours>00</span>
-        <span class="text-xs text-center">Horas</span>
-    </div>
-
-    <span aria-hidden="true" class="mb-4 text-xl">:</span>
-
-    <div class="cd-container">
-        <span class="text-6xl tabular-nums" data-minutes>00</span>
-        <span class="text-xs text-center">Minutos</span>
-    </div>
-
-    <span aria-hidden="true" class="mb-4 text-xl">:</span>
-
-    <div class="cd-container">
-        <span class="text-6xl tabular-nums" data-seconds>00</span>
-        <span class="text-xs text-center">Segundos</span>
-    </div>
-
+  <div class='cd-container'>
+    <span class='text-6xl tabular-nums' data-seconds>00</span>
+    <span class='text-xs text-center'>Segundos</span>
+  </div>
 </section>
 
 <style>
-    .cd-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        row-gap: 0.5rem;
-        width: 4rem;
-    }
-
+  .cd-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 0.5rem;
+    width: 4rem;
+  }
 </style>
 
 <script>
-    const SECOND = 1000
-    const MINUTE = SECOND * 60
-    const HOUR = MINUTE * 60
-    const DAY = HOUR * 24
+  const SECOND = 1000
+  const MINUTE = SECOND * 60
+  const HOUR = MINUTE * 60
+  const DAY = HOUR * 24
 
-    function countdown(){
-        const $countdown = document.querySelector('[data-date]')
-        if(!$countdown) return
+  function countdown() {
+    const $countdown = document.querySelector('[data-date]')
+    if (!$countdown) return
 
-        const $days = $countdown.querySelector('[data-days]')
-        const $hours = $countdown.querySelector('[data-hours]')
-        const $minutes = $countdown.querySelector('[data-minutes]')
-        const $seconds = $countdown.querySelector('[data-seconds]')
+    const $days = $countdown.querySelector('[data-days]')
+    const $hours = $countdown.querySelector('[data-hours]')
+    const $minutes = $countdown.querySelector('[data-minutes]')
+    const $seconds = $countdown.querySelector('[data-seconds]')
 
-        const timestamp = $countdown.getAttribute('data-date')
-        if (!timestamp) return
+    const timestamp = $countdown.getAttribute('data-date')
+    if (!timestamp) return
 
-        const date = new Date(+timestamp).getTime()
+    const date = new Date(+timestamp).getTime()
 
-        const formatTime = (time: number) => {return Math.floor(time).toString().padStart(2,"0")}
-
-        function updateCountdown () {
-            const now = Date.now()
-            const diff = date - now
-
-            if (diff <= 0) {
-                
-                if ($countdown instanceof HTMLElement) {
-                    $countdown.innerText = "no hay partidos programados"
-                }
-
-               
-                return 
-            }
-
-            if ($days instanceof HTMLElement ) {
-                $days.innerText = formatTime(diff / DAY)
-            }
-
-            if ($hours instanceof HTMLElement ) {
-                $hours.innerText = formatTime((diff % DAY) / HOUR)
-            }
-
-            if ($minutes instanceof HTMLElement ) {
-                $minutes.innerText = formatTime((diff % HOUR) / MINUTE)
-            }
-
-            if ($seconds instanceof HTMLElement ) {
-                $seconds.innerText = formatTime((diff % MINUTE) / SECOND)
-            }
-        }
-
-        setInterval(updateCountdown, SECOND)
+    const formatTime = (time: number) => {
+      return Math.floor(time).toString().padStart(2, '0')
     }
 
-    countdown()
+    function updateCountdown() {
+      const now = Date.now()
+      const diff = date - now
+
+      if (diff <= 0) {
+        if ($countdown instanceof HTMLElement) {
+          $countdown.innerText = 'no hay partidos programados'
+          $countdown.className = ' text-center text-slate-400 text-lg'
+        }
+
+        return
+      }
+
+      if ($days instanceof HTMLElement) {
+        $days.innerText = formatTime(diff / DAY)
+      }
+
+      if ($hours instanceof HTMLElement) {
+        $hours.innerText = formatTime((diff % DAY) / HOUR)
+      }
+
+      if ($minutes instanceof HTMLElement) {
+        $minutes.innerText = formatTime((diff % HOUR) / MINUTE)
+      }
+
+      if ($seconds instanceof HTMLElement) {
+        $seconds.innerText = formatTime((diff % MINUTE) / SECOND)
+      }
+    }
+
+    setInterval(updateCountdown, SECOND)
+  }
+
+  countdown()
 </script>

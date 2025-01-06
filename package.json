@@ -15,6 +15,7 @@
     "@fontsource-variable/jost": "^5.1.1",
     "@fontsource/ubuntu-mono": "^5.1.0",
     "@midudev/tailwind-animations": "^0.1.0",
+    "appwrite": "^16.1.0",
     "astro": "^5.0.8",
     "astro-icon": "^1.1.4",
     "motion": "^11.15.0",
