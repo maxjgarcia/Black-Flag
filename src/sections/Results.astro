@@ -23,8 +23,8 @@ const matches = await getMatchResults()
 
             <!-- Results Section -->
            
-           <div class='flex items-left space-x-4 col-span-2 pl-8 '>
-             <span class='font-semibold text-lg text-left'>{match.home_team_id}</span>
+           <div class='flex items-left space-x-4 col-span-2 pl-8 py-[2px]'>
+             <span class='font-semibold text-md text-left'>{match.home_team_id}</span>
              <span
                class={`text-xl font-bold ${isHomeWinner ? 'text-green-500' : isTie ? 'text-yellow-500' : 'text-red-600'}`}
              >
@@ -41,7 +41,7 @@ const matches = await getMatchResults()
 
             <!-- Tournament Section -->
            <div class="grid grid-cols-1">
-            <span class='text-sm text-right font-semibold text-slate-300/50  pr-4'>
+            <span class='text-sm text-left font-semibold text-slate-300/50  pr-4'>
               {match.tournament}
             </span>
            </div>

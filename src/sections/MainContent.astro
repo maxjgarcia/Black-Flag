@@ -1,25 +1,21 @@
 ---
 import Galeria from "./Galeria.astro";
-import GaleriaTest from "./GaleriaTest.astro";
 import InstagramIFrame from "./InstagramIFrame.astro";
 import { Image } from "astro:assets";
-import TeamPhoto from '../assets/team.jpg'
+import TeamPhoto from '../assets/new-team3.jpg'
+import CarouselSponsor from "../components/CarouselSponsor.astro";
 ---
-
-<section class="entrance flex flex-col items-center justify-center">
+<!-- <CarouselSponsor/> -->
+<section class="entrancee flex flex-col items-center justify-center pb-20">
     <h1 class="text-center text-4xl mb-8 ">Conocé al equipo</h1>
-    <!-- <a href="/players"><img src='/team.jpg' alt="Foto del equipo" class="rounded"></a> -->
-    <a href="/players"><Image src={TeamPhoto} alt="Foto del equipo" class="rounded"/></a>
-
+    <a href="/players"><Image src={TeamPhoto} alt="Foto del equipo" class="rounded max-w-[700px] faded"/></a>
 </section>
 
-<section>
+<section class="entrancee">
     <InstagramIFrame />
-     <GaleriaTest />
+     <Galeria />
 </section>
-<script>
 
 
-
-// w-full h-12 bg-gradient-to-l from-[#174897] via-[#2886BB] to-[#39C3DE]
+ <!-- w-full h-12 bg-gradient-to-l from-[#174897] via-[#2886BB] to-[#39C3DE] -->
 

@@ -32,6 +32,13 @@ export default {
 
 					transition: 'all 0.3s ease',
 				},
+
+				'.faded': {
+					'mask-image': 'linear-gradient(to bottom, black 75%, transparent 100%)',
+				},
+
+
+
 			},
 			['responsive', 'hover']
 		);

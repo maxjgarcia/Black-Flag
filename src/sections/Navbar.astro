@@ -1,3 +1,6 @@
+---
+const currentPath = Astro.url.pathname;
+---
 <header class="w-full h-16 bg-transparent">
   <nav class="w-full max-w-[1440px] mx-auto flex items-center justify-between px-6 py-4 bg-transparent text-white h-16">
 
@@ -5,10 +8,12 @@
       class={`absolute top-16 left-0 w-full bg-transparent text-white flex flex-col space-y-2 pb-1 px-6 md:relative md:top-0 md:flex md:flex-row md:items-center md:space-y-0 md:space-x-6 md:w-auto `}
     >
       <ul class="flex gap-x-5 justify-between">
+
           <li><a href="/" class="custom-link">Home</a></li>
-          <li><a href="/games" class="custom-link">Partidos</a></li>
-          <li><a href="/players" class="custom-link">Jugadores</a></li>
-          <li><a href="/socials" class="custom-link">Seguinos</a> </li>
+
+          {currentPath !== '/games' && ( <li><a href="/games" class="custom-link">Partidos</a></li>)}
+          {currentPath !== '/players' && ( <li><a href="/players" class="custom-link">Jugadores</a></li>)}
+          {currentPath !== '/socials' && ( <li><a href="/socials" class="custom-link">Seguinos</a></li>)}
       </ul>
     </div>
   </nav>

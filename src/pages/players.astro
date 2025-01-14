@@ -5,7 +5,7 @@ import playersData from '../data/players.json';
 const { players } = playersData;
 ---
 
-<Layout title="Black Flag Gaming | Players">
+<Layout title="Black Flag Gaming | Jugadores">
 
     
     <h1 class="text-center text-2xl mb-16 mt-12">Players</h1>
@@ -18,7 +18,7 @@ const { players } = playersData;
                 <div class="flex flex-col mb-4 ">
                     <div>  
                         <a href={`/players/${name}`} class="">
-                            <img class="mr-5 w-80 h-[400px] rounded-2xl grayscal-0 hover:grayscale" src={`/${img}`} alt={`Imagen de ${name}`} transition:name={`${name}`}/> 
+                            <img class="mr-5 w-80 h-[400px] rounded grayscal-0 hover:grayscale faded" src={`/${img}`} alt={`Imagen de ${name}`} transition:name={`${name}`}/> 
                         </a>
                     </div>
                     
@@ -30,3 +30,4 @@ const { players } = playersData;
         })}
     </section>
 </Layout>
+

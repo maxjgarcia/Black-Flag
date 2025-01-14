@@ -17,12 +17,13 @@ const listTeams = teams
 
 <!-- Next Match -->
  
-{listTeams.length > 0 && (
-  <section class="flex flex-row justify-center items-center w-full mb-20">
+
+{listTeams.length > 1 && (
+    <section class="flex flex-row justify-center items-center w-full mb-20">
     <!-- Left Team -->
     <div class="flex flex-col space-y-6 justify-center items-center">
       <h3 class="mt-2 text-lg font-semibold">{listTeams[0].name}</h3>
-      <img src={listTeams[0].logo} alt={`${listTeams[0].name} logo`} class="width={250} height={350} object-contain" />
+      <img src={listTeams[0].logo} alt={`${listTeams[0].name} logo`} class="w-[250px] h-[350px] object-contain" />
     </div>
   
     <!-- 'vs' separator -->
@@ -31,9 +32,10 @@ const listTeams = teams
     <!-- Right Team -->
     <div class="flex flex-col space-y-6 justify-center items-center">
       <h3 class="mt-2 text-lg font-semibold">{listTeams[1].name}</h3>
-      <img src={listTeams[1].logo} alt={`${listTeams[1].name} logo`} class="w-64 object-contain" />
+      <img src={listTeams[1].logo} alt={`${listTeams[1].name} logo`} class="w-[250px] h-[350px] object-contain" />
     </div>
   </section>
+
 )}
 
 

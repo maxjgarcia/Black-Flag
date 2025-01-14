@@ -7,12 +7,12 @@ import Results from "../sections/Results.astro";
 
 <Layout title="Black Flag Gaming | Partidos">
 
-<main class="mb-24 mt-20">
+<main class="mb-24 mt-20 min-h-screen">
 
 <NextMatch />
 
 <!-- Contdown -->
-<div class="border-t-2 border-b-2 border-primary-l-blue py-10">
+<div class="border-t-2 border-b-2 border-primary-l-blue py-10 mb-10">
     <CountDown server:defer>
         <div slot="fallback" class="flex justify-center items-center text-lg"> Cargando próximo partido...</div>
     </CountDown>
