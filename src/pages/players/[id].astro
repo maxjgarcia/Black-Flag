@@ -1,9 +1,12 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import playersData from '../../data/players.json';
+import { getPlayers } from "../../lib/appwrite";
+
+const players = await getPlayers();
+console.log(players)
 
 const { id } = Astro.params;
-const { players } = playersData;
+
 const player = players.find((player) => player.name === id);
 
 
@@ -11,7 +14,7 @@ if (!player) {
   return Astro.redirect('/404'); 
 }
 
-const { name, role, img, description } = player;
+const { name, role, image, description, fav_champs } = player;
 ---
 
 <Layout title=`BFG  ${name}`>
@@ -21,12 +24,15 @@ const { name, role, img, description } = player;
   <span><a href="/players">⬅️ Volver</a></span>
     <section class="max-w-2xl min-h-screen flex justify-center  space-x-8 pt-16">
     <aside>
-        <img src={`/${img}`} alt={`imagen de ${name}`} class="w-80 rounded faded" transition:name={`${name}`}>
+        <img src={image} alt={`imagen de ${name}`} class="w-80 rounded faded" transition:name={`${name}`}>
     </aside>
        <div class="flex flex-col">
         <div class="flex flex-row justify-between px-24 space-x-3">
             <h1 >{name}</h1>
             <h1>{role}</h1>
+           </div>
+           <div>
+            {fav_champs}
            </div>
           <div class="prose prose-invert">
            <p>{description}</p>

@@ -6,8 +6,9 @@ const SERVER_PROJECT = process.env.SERVER_PROJECT
 const DATABASE = process.env.DATABASE
 const COLLECTION_TEAMS = process.env.COLLECTION_TEAMS
 const COLLECTION_RESULTS = process.env.COLLECTION_RESULTS
+const COLLECTION_PLAYERS = process.env.COLLECTION_PLAYERS
 
-if (!SERVER_ENDPOINT || !SERVER_PROJECT || !DATABASE || !COLLECTION_TEAMS || !COLLECTION_RESULTS) {
+if (!SERVER_ENDPOINT || !SERVER_PROJECT || !DATABASE || !COLLECTION_TEAMS || !COLLECTION_RESULTS || !COLLECTION_PLAYERS) {
     throw new Error("One or more environment variables are missing.");
 }
 
@@ -40,6 +41,19 @@ export const getMatchResults = async () => {
         return response.documents;
     } catch (error) {
         console.error('Error fetching match data: ', error);
+        return [];
+    }
+};
+
+export const getPlayers = async () => {
+    try {
+        const response = await databases.listDocuments(
+            DATABASE, //  database ID
+            COLLECTION_PLAYERS // collection ID 
+        );
+        return response.documents;
+    } catch (error) {
+        console.error('Error fetching players data: ', error);
         return [];
     }
 };
