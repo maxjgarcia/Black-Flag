@@ -1,7 +1,19 @@
 ---
 // await new Promise((resolve) => setTimeout(resolve, 2000))
-// const NEXT_MATCH = 1736037000000
-const NEXT_MATCH = 1737246657000
+
+import { getCountdown } from "../lib/appwrite";
+
+// const NEXT_MATCH = (await getCountdown())[0].time; 
+
+const NEXT_MATCH_RESPONSE = await getCountdown();
+let NEXT_MATCH = null
+
+
+if (NEXT_MATCH_RESPONSE && NEXT_MATCH_RESPONSE.length > 0) {
+  NEXT_MATCH = NEXT_MATCH_RESPONSE[0].time;
+} 
+
+
 ---
 
 <!-- Countdown -->
@@ -45,13 +57,16 @@ const NEXT_MATCH = 1737246657000
     row-gap: 0.5rem;
     width: 4rem;
   }
+
 </style>
+
 
 <script>
   const SECOND = 1000
   const MINUTE = SECOND * 60
   const HOUR = MINUTE * 60
   const DAY = HOUR * 24
+
 
   function countdown() {
     const $countdown = document.querySelector('[data-date]')
@@ -106,3 +121,5 @@ const NEXT_MATCH = 1737246657000
 
   countdown()
 </script>
+
+

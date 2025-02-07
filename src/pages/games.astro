@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import NextMatch from '../sections/NextMatch.astro';
 import CountDown from "../components/CountDown.astro";
 import Results from "../sections/Results.astro";
+
 ---
 
 <Layout title="Black Flag Gaming | Partidos">
@@ -12,11 +13,13 @@ import Results from "../sections/Results.astro";
 <NextMatch />
 
 <!-- Contdown -->
-<div class="border-t-2 border-b-2 border-primary-l-blue py-10 mb-10">
+<div class="border-t-2 border-b-2 border-primary-l-blue py-10 mb-10 ">
     <CountDown server:defer>
         <div slot="fallback" class="flex justify-center items-center text-lg"> Cargando próximo partido...</div>
     </CountDown>
 </div>
+
+
 
 <!-- Results -->
 
@@ -24,3 +27,19 @@ import Results from "../sections/Results.astro";
 
 </main>
 </Layout>
+
+<style>
+      @keyframes fadeInWithDelay {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in-new {
+  animation: fadeInWithDelay 15s ease-in-out forwards;
+  animation-delay: 0.5s; 
+}
+</style>

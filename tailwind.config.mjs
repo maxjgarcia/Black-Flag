@@ -11,6 +11,7 @@ export default {
 				'primary-m-blue': '#2886BB',
 				'primary-l-blue': '#39C3DE',
 			},
+
 		},
 	},
 	plugins: [typography, animations, function ({ addUtilities, theme, e }) {
