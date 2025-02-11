@@ -1,7 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
-
-
+import Image from "astro/components/Image.astro";
+import {LogoBFG} from '../assets/index'
 ---
 
 <div class="w-full h-0.5 bg-gradient-to-r from-[#174897] via-[#2886BB] to-[#39C3DE] "></div>
@@ -45,16 +45,23 @@ import { Icon } from "astro-icon/components";
 
                   <!-- Iconos -->
                    <div class="flex items-center gap-8"> 
-                  <!-- X -->
+                  <!-- X -->             
+
                   <a href="https://x.com/blackflagge" target="_blank" rel="noopener" class=" custom-link ">
-                    <Icon name="x-twitter" class="text-xl"/>
+                    <Icon name="x-twitter" class="text-2xl"/>
                   </a>
+
+                  <!-- Logo BFG -->
+                  <a href="/"> <Image src={LogoBFG} alt="Logo Black Flag Gaming" class="h-20 w-auto cursor-pointer"/></a>
 
                   <!-- Instagram -->
                   <a href="https://www.instagram.com/blackflaggaminglol/" target="_blank" rel="noopener" class=" custom-link ">
-                <Icon name="instagram" class="text-3xl"/>
+                <Icon name="instagram" class="text-4xl"/>
                   </a>
+                 </div>
+
                 </div>
+
               </div>
 
              

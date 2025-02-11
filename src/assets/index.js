@@ -1,3 +1,5 @@
+export { default as LogoBFG } from './LogoBFG.svg'
+
 export { default as shirt1 } from './shirt1.jpg'
 export { default as shirt2Back } from './shirt2-back.jpg'
 export { default as shirt2Front } from './shirt2-front.jpg'
